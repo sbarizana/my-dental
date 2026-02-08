@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('payment_details', function (Blueprint $table) {
             $table->id()->primary();
-            // $table->foreignUuid('payment_id')->constrained('payments', 'id');
-            // $table->foreignUuid('product_id')->constrained('products', 'id');
-            // $table->foreignUuid('user_id_created')->constrained('users', 'id');
-            // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            // Indexes
+            $table->index(['id', 'is_deleted']);
         });
     }
 

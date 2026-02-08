@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id()->primary();
-            // $table->foreignUuid('customer_id')->constrained('customers', 'id');
-            // $table->foreignUuid('branch_id')->constrained('branches', 'id');
-            // $table->foreignUuid('dentist_employee_id')->constrained('employees', 'id');
-            // $table->foreignUuid('cashier_employee_id')->constrained('employees', 'id');
             $table->string('method_payment');
             $table->decimal('total', 10, 2);
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            // Indexes
+            $table->index(['id', 'is_deleted']);
         });
     }
 

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products', 'id');
             $table->foreignId('user_id_created')->constrained('users', 'id');
             $table->foreignId('user_id_updated')->nullable()->constrained('users', 'id');
+
+            // Indexes for foreign keys
+            $table->index('payment_id');
+            $table->index('product_id');
         });
     }
 

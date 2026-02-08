@@ -16,6 +16,10 @@ return new class extends Migration
             $table->foreignId('branch_id')->constrained('branches', 'id');
             $table->foreignId('user_id_created')->constrained('users', 'id');
             $table->foreignId('user_id_updated')->nullable()->constrained('users', 'id');
+
+            // Indexes for foreign keys
+            $table->index('role_id');
+            $table->index('branch_id');
         });
     }
 

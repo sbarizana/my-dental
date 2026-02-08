@@ -18,10 +18,15 @@ return new class extends Migration
             $table->string('address');
             $table->string('latitude');
             $table->string('longitude');
-            // $table->foreignUuid('user_id_created')->constrained('users', 'id');
-            // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            // Indexes
+            $table->index('name');
+            $table->index('phone');
+            $table->index(['latitude', 'longitude']);
+            $table->index(['id', 'is_deleted']);
         });
     }
 

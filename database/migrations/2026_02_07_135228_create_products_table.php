@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
-            // $table->foreignUuid('user_id_created')->constrained('users', 'id');
-            // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            // Indexes
+            $table->index('name');
+            $table->index('price');
+            $table->index(['id', 'is_deleted']);
         });
     }
 

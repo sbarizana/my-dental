@@ -15,12 +15,14 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('phone');
             $table->string('email');
-            // $table->foreignUuid('role_id')->constrained('roles', 'id');
-            // $table->foreignUuid('branch_id')->constrained('branches', 'id');
-            // $table->foreignUuid('user_id_created')->constrained('users', 'id');
-            // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
+            $table->boolean('is_deleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            // Indexes
+            $table->index('phone');
+            $table->index('email');
+            $table->index(['id', 'is_deleted']);
         });
     }
 
