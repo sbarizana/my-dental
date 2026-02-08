@@ -14,4 +14,20 @@ class Role extends Model
     protected $fillable = ['name', 'level', 'user_id_created', 'user_id_updated'];
 
     protected $dates = ['deleted_at'];
+
+    // Relationships
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'user_id_created');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'user_id_updated');
+    }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'role_id');
+    }
 }
