@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
             // $table->foreignUuid('user_id_created')->constrained('users', 'id');

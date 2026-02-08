@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('name');
-            $table->string('phone')->unique();
-            $table->string('email')->unique()->nullable();
+            $table->string('phone');
+            $table->string('email')->nullable();
             // $table->foreignUuid('user_id_created')->constrained('users', 'id');
             // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
             $table->timestamps();

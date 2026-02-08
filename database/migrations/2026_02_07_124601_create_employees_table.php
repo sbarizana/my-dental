@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('phone')->unique();
-            $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('email');
             // $table->foreignUuid('role_id')->constrained('roles', 'id');
             // $table->foreignUuid('branch_id')->constrained('branches', 'id');
             // $table->foreignUuid('user_id_created')->constrained('users', 'id');

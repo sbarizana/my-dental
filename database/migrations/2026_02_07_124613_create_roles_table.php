@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id()->primary();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('level');
             // $table->foreignUuid('user_id_created')->constrained('users', 'id');
             // $table->foreignUuid('user_id_updated')->nullable()->constrained('users', 'id');
